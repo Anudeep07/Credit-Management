@@ -43,7 +43,7 @@
         </table>    
 
         <div class="row justify-content-center py-3">
-            <a href="/CreditManagement" class="btn btn-danger">Go Back</a>    
+            <a href="/" class="btn btn-danger">Go Back</a>    
         </div>
 
         <?php
