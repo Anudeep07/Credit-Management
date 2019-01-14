@@ -18,29 +18,44 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center py-4">View All Transactions</h1>
 
-        <table class="table table-hover">
-            <thead>
-                <th scope="col">Transaction ID</th>
-                <th scope="col">Source User ID</th>
-                <th scope="col">Destination User ID</th>
-                <th scope="col">Amount Transferred</th>
-            </thead>
-            <tbody>
-                <?php
-                    while($row = $result->fetch_assoc())
-                    {
-                        echo "<tr>";
-                            echo "<td>" . $row["TransactionID"] . "</td> 
-                                <td>" . $row["SourceUser"] . "</td>
-                                <td>" . $row["DestinationUser"] . "</td>
-                                <td>" . $row["AmountTransferred"] . "</td";
-                        echo "</tr>";
-                    }
-                ?>
-            </tbody>
-        </table>    
+        <?php
+            if($result->num_rows == 0)
+            {
+        ?>
+                <h2 class="text-center py-3">No transactions occurred so far.</h2>
+        <?php
+            }
+            else
+            {
+        ?>    
+
+                <h1 class="text-center py-4">View All Transactions</h1>       
+                <table class="table table-hover">
+                    <thead>
+                        <th scope="col">Transaction ID</th>
+                        <th scope="col">Source User ID</th>
+                        <th scope="col">Destination User ID</th>
+                        <th scope="col">Amount Transferred</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                            while($row = $result->fetch_assoc())
+                            {
+                                echo "<tr>";
+                                    echo "<td>" . $row["TransactionID"] . "</td> 
+                                        <td>" . $row["SourceUser"] . "</td>
+                                        <td>" . $row["DestinationUser"] . "</td>
+                                        <td>" . $row["AmountTransferred"] . "</td";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </tbody>
+                </table>    
+
+        <?php
+            }
+        ?>
 
         <div class="row justify-content-center py-3">
             <a href="/" class="btn btn-danger">Go Back</a>    
